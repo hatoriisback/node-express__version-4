@@ -1,0 +1,26 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "learn node express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatoriisback/node-express__version-4.git"
+  },
+  "keywords": [
+    "learn",
+    "node-express"
+  ],
+  "author": "Hendy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hatoriisback/node-express__version-4/issues"
+  },
+  "homepage": "https://github.com/hatoriisback/node-express__version-4#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
