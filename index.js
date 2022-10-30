@@ -5,14 +5,27 @@ const app = express();
 const expressRouter = require("./router/express");
 const dataUsersRouter = require("./router/data-users");
 
-// * call body-parser
+// * Import / Call body-parser
 let bodyParser = require("body-parser");
 
-// * parser for POST a data
+// * Load parser for POST a data
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-// * parse application/x-www-form-urlencoded
+// * 15) How to Write Middleware
+const myLogger = function (req, res, next) {
+  console.log("LOGGED");
+  // req.time = new Date();
+  next();
+};
+
+// * 15) Load Middleware
+app.use(myLogger);
+
+// * 16) Load Middleware
+app.set("view engine", "ejs");
+
+// * Load parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // // * 1) Hello World
@@ -29,8 +42,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // * 3) Membuat Routing
 app.get("/home", (req, res) => {
-  res.send("Home");
+  // const data = {
+  //   message: "HOME",
+  //   date: req.time.toString(),
+  // };
+
   console.log("Route /home , Berhasil Terbaca");
+  res.render("index");
 });
 
 app.get("/users", (req, res) => {
@@ -100,10 +118,10 @@ app
     res.send("POST/CREATE -- USERS has been Sended");
   });
 
-// * 8) Express Router & 9) Require
+// * 8) Load Express Router & 9) Require
 app.use(expressRouter);
 
-// * 10 - 13) Read, Create, Update, Delete Data
+// * 10 - 13) Load Read, Create, Update, Delete Data
 app.use(dataUsersRouter);
 
 // todo ==> LISTEN SERVER PORT 5000
